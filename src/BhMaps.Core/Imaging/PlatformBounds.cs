@@ -29,7 +29,11 @@ public static class PlatformBounds
     public static CameraBounds? For(LevelDesc level, double pad, double aspect, IReadOnlySet<string>? focus)
     {
         var camera = level.Camera;
-        if (camera.W <= 0 || camera.H <= 0 || aspect <= 0)
+
+        // Written so a NaN fails each test too: a camera that is not a finite area has nothing to frame.
+        if (!(camera.W > 0) || !(camera.H > 0) || !(aspect > 0)
+            || !double.IsFinite(camera.X) || !double.IsFinite(camera.Y)
+            || !double.IsFinite(camera.W) || !double.IsFinite(camera.H) || !double.IsFinite(aspect))
         {
             return null;
         }
@@ -48,6 +52,14 @@ public static class PlatformBounds
 
         w += w * pad * 2;
         h += h * pad * 2;
+
+        // An endless asset or a padding that shrinks the box to nothing leaves no box, so the caller renders the
+        // whole level, the same as for a level with no platforms.
+        if (!(w > 0) || !(h > 0) || !double.IsFinite(w) || !double.IsFinite(h)
+            || !double.IsFinite(cx) || !double.IsFinite(cy))
+        {
+            return null;
+        }
 
         // Grow the short axis to the thumbnail's shape, so the render fills it with no letterbox.
         if (w / h < aspect)
@@ -71,9 +83,18 @@ public static class PlatformBounds
             h = w / aspect;
         }
 
-        var x = Math.Clamp(cx - (w / 2), camera.X, camera.X + camera.W - w);
-        var y = Math.Clamp(cy - (h / 2), camera.Y, camera.Y + camera.H - h);
+        var x = ClampStart(cx - (w / 2), camera.X, camera.W, w);
+        var y = ClampStart(cy - (h / 2), camera.Y, camera.H, h);
         return new CameraBounds(x, y, w, h);
+    }
+
+    /// <summary>3.11.1: keeps a box of the given size inside one camera axis. When the box fills the camera,
+    /// start + length - size can round to one step under start, and Math.Clamp throws when max is under min, so
+    /// the range collapses to start then.</summary>
+    private static double ClampStart(double value, double start, double length, double size)
+    {
+        var end = start + length - size;
+        return Math.Clamp(value, start, end >= start ? end : start);
     }
 
     /// <summary>The plain union of the unthemed platform assets in camera space, with no padding and no aspect

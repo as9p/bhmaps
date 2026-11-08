@@ -109,6 +109,43 @@ public class PlatformBoundsTests
         Assert.Null(bounds);
     }
 
+    [Theory]
+    [InlineData(0.1, 0)]
+    [InlineData(0, 0.1)]
+    public void For_DoesNotThrowWhenTheBoxFillsTheCameraAndRoundingLeavesNoRoom(double cameraX, double cameraY)
+    {
+        // A platform far bigger than a 0.7 x 0.7 camera, so the box is cut to exactly the camera. Then
+        // 0.1 + 0.7 - 0.7 rounds to one step under 0.1, and a plain Math.Clamp throws because max < min.
+        var level = Level(new CameraBounds(cameraX, cameraY, 0.7, 0.7), Node(0, 0, Asset(0, 0, 1000, 1000)));
+
+        var bounds = PlatformBounds.For(level, 0.12, 1);
+
+        Assert.NotNull(bounds);
+        Assert.Equal(cameraX, bounds!.X);
+        Assert.Equal(cameraY, bounds.Y);
+        Assert.Equal(0.7, bounds.W);
+        Assert.Equal(0.7, bounds.H);
+    }
+
+    [Theory]
+    [InlineData(double.NaN, 1000, 100, 0.12)]
+    [InlineData(0, double.PositiveInfinity, 100, 0.12)]
+    [InlineData(0, double.NaN, 100, 0.12)]
+    [InlineData(0, 1000, double.PositiveInfinity, 0.12)]
+    [InlineData(0, 1000, 100, -0.5)]
+    [InlineData(0, 1000, 100, -1)]
+    [InlineData(0, 1000, 100, double.NaN)]
+    public void For_ReturnsNullForADegenerateSizeOrCamera(double cameraX, double cameraW, double assetW, double pad)
+    {
+        // A non-finite camera or box, or a padding that shrinks the box to nothing, has no box to frame. Null
+        // renders the whole level, as a level with no usable camera already does, and nothing throws.
+        var level = Level(new CameraBounds(cameraX, 0, cameraW, 600), Node(400, 300, Asset(0, 0, assetW, 20)));
+
+        var bounds = PlatformBounds.For(level, pad, Aspect);
+
+        Assert.Null(bounds);
+    }
+
     private static PlatformNode Named(double x, double y, string assetName) =>
         new(x, y, 1, 1, 1, 0, null, [new LevelAsset(assetName, 0, 0, 100, 100)], []);
 
