@@ -204,7 +204,10 @@ public partial class PlatformEditorWindow : Window
             return ((view - zoomed) / 2) - (start * _viewZoom);
         }
 
-        return Math.Clamp(offset, view - ((start + length) * _viewZoom), -start * _viewZoom);
+        // 3.11.1: when the stage only just overflows the view, rounding can put the low end a step above the high
+        // end, and Math.Clamp throws when max is under min.
+        var high = -start * _viewZoom;
+        return Math.Clamp(offset, Math.Min(view - ((start + length) * _viewZoom), high), high);
     }
 
     /// <summary>G6: the one matrix to the Viewbox and the guides, and the chip and the cursor that go with it.</summary>
