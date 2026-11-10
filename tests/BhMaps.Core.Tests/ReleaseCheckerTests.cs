@@ -13,13 +13,13 @@ public class ReleaseCheckerTests
         Assert.Equal(new Version(2, 6, 0), release!.Version);
         Assert.Equal("v2.6.0", release.TagName);
         Assert.Equal(new DateTimeOffset(2026, 9, 14, 10, 30, 0, TimeSpan.Zero), release.PublishedAt);
-        Assert.Equal("https://github.com/as9pa/bhmaps/releases/tag/v2.6.0", release.HtmlUrl);
+        Assert.Equal("https://github.com/as9p/bhmaps/releases/tag/v2.6.0", release.HtmlUrl);
         Assert.Equal(
-            "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps.exe",
+            "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps.exe",
             release.ExeUrl);
         Assert.Equal(141557760, release.ExeSize);
         Assert.Equal(
-            "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt",
+            "https://github.com/as9p/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt",
             release.ChecksumsUrl);
         Assert.Equal("Pack tile menus, copy and move, auto-update.", release.Body);
     }
@@ -41,7 +41,7 @@ public class ReleaseCheckerTests
 
         Assert.NotNull(release);
         Assert.Equal(
-            "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip",
+            "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip",
             release!.ZipUrl);
         Assert.Equal(3145728, release.ZipSize);
         Assert.Equal("bhmaps-dotnet.zip", ReleaseChecker.ZipName);

@@ -9,7 +9,7 @@ namespace BhMaps.Core.Update;
 /// the check is applied here rather than on the client, so it never caps the download.</summary>
 public sealed class UpdateClient(HttpClient http)
 {
-    public const string LatestUrl = "https://api.github.com/repos/as9pa/bhmaps/releases/latest";
+    public const string LatestUrl = "https://api.github.com/repos/as9p/bhmaps/releases/latest";
 
     public static readonly TimeSpan CheckTimeout = TimeSpan.FromSeconds(10);
 
