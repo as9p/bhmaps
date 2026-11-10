@@ -5,12 +5,12 @@
 <p>Brawlhalla map art manager for Windows</p>
 
 <p>
-<a href="https://github.com/as9pa/bhmaps/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/as9pa/bhmaps?label=release&color=3b4252"></a>
-<a href="https://github.com/as9pa/bhmaps/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/as9pa/bhmaps/total?color=3b4252"></a>
+<a href="https://github.com/as9p/bhmaps/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/as9p/bhmaps?label=release&color=3b4252"></a>
+<a href="https://github.com/as9p/bhmaps/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/as9p/bhmaps/total?color=3b4252"></a>
 <a href="LICENSE"><img alt="License: GPL-3.0" src="https://img.shields.io/badge/license-GPL--3.0-3b4252"></a>
 <img alt="Discord: aexax" src="https://img.shields.io/badge/Discord-aexax-5865F2">
 
-<p><b><a href="https://github.com/as9pa/bhmaps/releases/latest/download/bhmaps.exe">Download bhmaps.exe</a></b> &middot; Windows 10 or 11 &middot; 135 MB</p>
+<p><b><a href="https://github.com/as9p/bhmaps/releases/latest/download/bhmaps.exe">Download bhmaps.exe</a></b> &middot; Windows 10 or 11 &middot; 135 MB</p>
 
 <sub>Needs Brawlhalla on Steam. Windows may warn on first run because the exe is unsigned: choose "More info", then "Run anyway".</sub>
 
@@ -85,7 +85,7 @@ development against a throwaway copy of the game folder, and known limitations.
 
 ## Other downloads
 
-Every version is on the [Releases](https://github.com/as9pa/bhmaps/releases) page. If you already have the
+Every version is on the [Releases](https://github.com/as9p/bhmaps/releases) page. If you already have the
 [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0), `bhmaps-dotnet.zip` (about 1 MB) is
 the same app without the runtime inside.
 
@@ -101,7 +101,7 @@ includes its code, you must release that program's source under the same license
 and author notices.
 
 Additional term under section 7(b) of the GPL: any copy or modified version must keep the author
-attribution "BhMaps by aexax" with a link to https://github.com/as9pa/bhmaps, in its documentation and in
+attribution "BhMaps by aexax" with a link to https://github.com/as9p/bhmaps, in its documentation and in
 any about or credits screen it shows.
 
 Copyright (C) 2026 aexax
