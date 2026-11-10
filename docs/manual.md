@@ -9,6 +9,10 @@ and `.jpg` files inside the `mapArt` folder and inside its own library, plus its
 folder, and it keeps a copy of every original so it can put it back. The game's data files are read and never written, and
 nothing else in the game install is touched.
 
+## What is new in 3.11.2
+
+- Links and the update check now point at the as9p GitHub account, so updates keep arriving after the account rename.
+
 ## What is new in 3.11.1
 
 - Fixed a crash when a platform thumbnail or the Edit platforms view filled the level exactly and rounding left no room to place it.
