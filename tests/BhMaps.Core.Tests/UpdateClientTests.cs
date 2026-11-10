@@ -10,10 +10,10 @@ namespace BhMaps.Core.Tests;
 public class UpdateClientTests
 {
     private const string ExeUrl =
-        "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps.exe";
+        "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps.exe";
 
     private const string SumsUrl =
-        "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt";
+        "https://github.com/as9p/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt";
 
     private static readonly byte[] Exe = Encoding.ASCII.GetBytes("MZ this stands in for a 135 MB exe");
 
@@ -24,7 +24,7 @@ public class UpdateClientTests
         + "0000000000000000000000000000000000000000000000000000000000000000  bhmaps-dotnet.zip\n";
 
     private const string ZipUrl =
-        "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip";
+        "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip";
 
     private static string ZipSums(string zipHex) =>
         "0000000000000000000000000000000000000000000000000000000000000000  bhmaps.exe\n"
@@ -229,8 +229,8 @@ internal static class UpdateSamples
     /// 2.6.0 ships. Saved as a string: no test of these classes ever reaches the network.</summary>
     public const string LatestJson = """
     {
-      "url": "https://api.github.com/repos/as9pa/bhmaps/releases/1",
-      "html_url": "https://github.com/as9pa/bhmaps/releases/tag/v2.6.0",
+      "url": "https://api.github.com/repos/as9p/bhmaps/releases/1",
+      "html_url": "https://github.com/as9p/bhmaps/releases/tag/v2.6.0",
       "tag_name": "v2.6.0",
       "name": "BhMaps 2.6.0",
       "draft": false,
@@ -241,17 +241,17 @@ internal static class UpdateSamples
         {
           "name": "bhmaps.exe",
           "size": 141557760,
-          "browser_download_url": "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps.exe"
+          "browser_download_url": "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps.exe"
         },
         {
           "name": "bhmaps-dotnet.zip",
           "size": 3145728,
-          "browser_download_url": "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip"
+          "browser_download_url": "https://github.com/as9p/bhmaps/releases/download/v2.6.0/bhmaps-dotnet.zip"
         },
         {
           "name": "SHA256SUMS.txt",
           "size": 189,
-          "browser_download_url": "https://github.com/as9pa/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt"
+          "browser_download_url": "https://github.com/as9p/bhmaps/releases/download/v2.6.0/SHA256SUMS.txt"
         }
       ]
     }

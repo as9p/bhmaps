@@ -292,12 +292,12 @@ public partial class SettingsPageViewModel : PageViewModel
 
     /// <summary>The credit line's GitHub link: the repository's front page.</summary>
     [RelayCommand]
-    private void OpenRepository() => OpenCreditLink("https://github.com/as9pa/bhmaps", "GitHub not opened");
+    private void OpenRepository() => OpenCreditLink("https://github.com/as9p/bhmaps", "GitHub not opened");
 
     /// <summary>The credit line's GPL-3.0 link: the license as it stands on main.</summary>
     [RelayCommand]
     private void OpenLicense() =>
-        OpenCreditLink("https://github.com/as9pa/bhmaps/blob/main/LICENSE", "License not opened");
+        OpenCreditLink("https://github.com/as9p/bhmaps/blob/main/LICENSE", "License not opened");
 
     /// <summary>A dialog when the browser does not open, as for Changelog: the credit line has no room for a
     /// reason of its own.</summary>
